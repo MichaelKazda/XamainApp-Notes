@@ -5,3 +5,10 @@ D:\_SKOLA\PCv\Olzbut ERA\Xamarin\NoteApp\NotesApp\NotesApp\obj\Debug\netstandard
 D:\_SKOLA\PCv\Olzbut ERA\Xamarin\NoteApp\NotesApp\NotesApp\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
 D:\_SKOLA\PCv\Olzbut ERA\Xamarin\NoteApp\NotesApp\NotesApp\obj\Debug\netstandard2.0\NotesApp.AssemblyInfoInputs.cache
 D:\_SKOLA\PCv\Olzbut ERA\Xamarin\NoteApp\NotesApp\NotesApp\obj\Debug\netstandard2.0\NotesApp.AssemblyInfo.cs
+D:\_SKOLA\PCv\Olzbut ERA\Xamarin\NoteApp\NotesApp\NotesApp\bin\Debug\netstandard2.0\ref\NotesApp.dll
+D:\_SKOLA\PCv\Olzbut ERA\Xamarin\NoteApp\NotesApp\NotesApp\bin\Debug\netstandard2.0\NotesApp.pdb
+D:\_SKOLA\PCv\Olzbut ERA\Xamarin\NoteApp\NotesApp\NotesApp\obj\Debug\netstandard2.0\NotesApp.csproj.CoreCompileInputs.cache
+D:\_SKOLA\PCv\Olzbut ERA\Xamarin\NoteApp\NotesApp\NotesApp\obj\Debug\netstandard2.0\XamlC.stamp
+D:\_SKOLA\PCv\Olzbut ERA\Xamarin\NoteApp\NotesApp\NotesApp\obj\Debug\netstandard2.0\NotesApp.dll
+D:\_SKOLA\PCv\Olzbut ERA\Xamarin\NoteApp\NotesApp\NotesApp\obj\Debug\netstandard2.0\ref\NotesApp.dll
+D:\_SKOLA\PCv\Olzbut ERA\Xamarin\NoteApp\NotesApp\NotesApp\obj\Debug\netstandard2.0\NotesApp.pdb
