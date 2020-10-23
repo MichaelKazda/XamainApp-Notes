@@ -102,6 +102,10 @@
               "version": "[2.0.3, )",
               "autoReferenced": true
             },
+            "Syncfusion.Xamarin.SfPopupLayout": {
+              "target": "Package",
+              "version": "[18.3.0.42, )"
+            },
             "Xamarin.Essentials": {
               "target": "Package",
               "version": "[1.5.3.2, )"

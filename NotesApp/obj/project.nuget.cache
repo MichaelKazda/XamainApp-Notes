@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Bx7mXzSR0wmOO7mou/l5ZS83yXCKvLpTkcht75C0w6Gyy3Pbrs5s9RwnZBfUzZFvwXLrBDJI1+WS4OE59D5X9w==",
+  "dgSpecHash": "25sxetD17o7MAvkwd1o1vf6kksp/AEP++FoZpfN5YY5YbBCxj0kOAr1H0ZJXdaoDDsyE33DgjLi/rbu0F3KuZg==",
   "success": true,
   "projectFilePath": "D:\\_SKOLA\\PCv\\Olzbut ERA\\Xamarin\\NoteApp\\NotesApp\\NotesApp\\NotesApp.csproj",
   "expectedPackageFiles": [
@@ -11,6 +11,9 @@
     "C:\\Users\\Lukáš\\.nuget\\packages\\sqlitepclraw.core\\2.0.3\\sqlitepclraw.core.2.0.3.nupkg.sha512",
     "C:\\Users\\Lukáš\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.0.3\\sqlitepclraw.lib.e_sqlite3.2.0.3.nupkg.sha512",
     "C:\\Users\\Lukáš\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.0.3\\sqlitepclraw.provider.e_sqlite3.2.0.3.nupkg.sha512",
+    "C:\\Users\\Lukáš\\.nuget\\packages\\syncfusion.licensing\\18.3.0.42\\syncfusion.licensing.18.3.0.42.nupkg.sha512",
+    "C:\\Users\\Lukáš\\.nuget\\packages\\syncfusion.xamarin.core\\18.3.0.42\\syncfusion.xamarin.core.18.3.0.42.nupkg.sha512",
+    "C:\\Users\\Lukáš\\.nuget\\packages\\syncfusion.xamarin.sfpopuplayout\\18.3.0.42\\syncfusion.xamarin.sfpopuplayout.18.3.0.42.nupkg.sha512",
     "C:\\Users\\Lukáš\\.nuget\\packages\\system.buffers\\4.4.0\\system.buffers.4.4.0.nupkg.sha512",
     "C:\\Users\\Lukáš\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
     "C:\\Users\\Lukáš\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
