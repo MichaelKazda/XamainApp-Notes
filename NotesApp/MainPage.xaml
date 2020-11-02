@@ -1,206 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:NotesApp"
-             xmlns:sfPopup="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusion.SfPopupLayout.XForms"
-             x:Class="NotesApp.MainPage">
+             x:Class="NotesApp.MainPage"
+             >
 
-    <ContentPage.BindingContext>
-        <local:MainViewModel/>
-    </ContentPage.BindingContext>
-    
     <StackLayout>
+        <StackLayout>
+            <!-- Header with date -->
+            <Frame BackgroundColor="CadetBlue" Padding="24" CornerRadius="0">
+                <StackLayout>
+                    <Label Text="YOUR NOTES" HorizontalTextAlignment="Center" TextColor="White" FontSize="36" FontAttributes="Bold"/>
+                    <Label FontSize="16" HorizontalTextAlignment="Center" TextColor="White">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="Today is "/>
+                                    <Span x:Name="today"/>
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+        
         <ScrollView>
-            <StackLayout>
-                <!-- Header with date -->
-                <Frame BackgroundColor="CadetBlue" Padding="24" CornerRadius="0">
-                    <StackLayout>
-                        <Label Text="YOUR NOTES" HorizontalTextAlignment="Center" TextColor="White" FontSize="36" FontAttributes="Bold"/>
-                        <Label FontSize="16" HorizontalTextAlignment="Center" TextColor="White">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <FormattedString.Spans>
-                                        <Span Text="Today is "/>
-                                        <Span Text="{Binding TodayDate}"/>
-                                    </FormattedString.Spans>
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                    </StackLayout>
-                </Frame>
-
-                <!-- Individual Notes -->
-                <Frame Margin="15, 5" CornerRadius="5" HasShadow="True" OutlineColor="LightGray">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <!-- Header of note -->
-                        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Note title" FontSize="20" TextColor="black" FontAttributes="Bold"/>
-                        <Label Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Text="26.5.2020" HorizontalTextAlignment="End" VerticalTextAlignment="End" FontSize="15" TextColor="black"/>
-
-                        <!-- Body of note -->
-                        <Label Grid.Row="1" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="4" FontSize="15" TextColor="#4D4D4D">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <FormattedString.Spans>
-                                        <Span Text="Your note: " FontAttributes="Bold" FontSize="15"/>
-                                        <Span Text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam dapibus fermentum ipsum. Etiam bibendum elit eget erat. Nulla accumsan, elit sit amet varius semper, nulla mauris mollis quam, tempor suscipit diam nulla vel leo. Fusce consectetuer risus a nunc. Duis risus. Fusce suscipit libero eget elit."/>
-                                    </FormattedString.Spans>
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-
-                        <!-- Footer of note -->
-                        <Label Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Text="Edited on 29.5.2020" FontSize="12" TextColor="Gray" VerticalTextAlignment="End"/>
-                        <StackLayout Grid.Row="5" Grid.Column="3" HorizontalOptions="End" Margin="0,0,15,0">
-                            <ImageButton x:Name="delete" HeightRequest="25" Source="delete_icon.png" BackgroundColor="White"/>
-                        </StackLayout>
-                        <StackLayout Grid.Row="5" Grid.Column="3" HorizontalOptions="Start" >
-                            <ImageButton x:Name="edit" HeightRequest="25" Source="edit_icon.png" BackgroundColor="White"/>
-                        </StackLayout>
-                    </Grid>
-                </Frame>
-
-                <Frame Margin="15, 5" CornerRadius="5" HasShadow="True" OutlineColor="LightGray">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <!-- Header of note -->
-                        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Note title" FontSize="20" TextColor="black" FontAttributes="Bold"/>
-                        <Label Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Text="26.5.2020" HorizontalTextAlignment="End" VerticalTextAlignment="End" FontSize="15" TextColor="black"/>
-
-                        <!-- Body of note -->
-                        <Label Grid.Row="1" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="4" FontSize="15" TextColor="#4D4D4D">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <FormattedString.Spans>
-                                        <Span Text="Your note: " FontAttributes="Bold" FontSize="15"/>
-                                        <Span Text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam dapibus fermentum ipsum. Etiam bibendum elit eget erat. Nulla accumsan, elit sit amet varius semper, nulla mauris mollis quam, tempor suscipit diam nulla vel leo. Fusce consectetuer risus a nunc. Duis risus. Fusce suscipit libero eget elit."/>
-                                    </FormattedString.Spans>
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-
-                        <!-- Footer of note -->
-                        <Label Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Text="Edited on 29.5.2020" FontSize="12" TextColor="Gray" VerticalTextAlignment="End"/>
-                        <StackLayout Grid.Row="5" Grid.Column="3" HorizontalOptions="End" Margin="0,0,15,0">
-                            <ImageButton x:Name="delete2" HeightRequest="25" Source="delete_icon.png" BackgroundColor="White"/>
-                        </StackLayout>
-                        <StackLayout Grid.Row="5" Grid.Column="3" HorizontalOptions="Start" >
-                            <ImageButton x:Name="edit2" HeightRequest="25" Source="edit_icon.png" BackgroundColor="White"/>
-                        </StackLayout>
-                    </Grid>
-                </Frame>
-
-                <Frame Margin="15, 5" CornerRadius="5" HasShadow="True" OutlineColor="LightGray">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <!-- Header of note -->
-                        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Note title" FontSize="20" TextColor="black" FontAttributes="Bold"/>
-                        <Label Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Text="26.5.2020" HorizontalTextAlignment="End" VerticalTextAlignment="End" FontSize="15" TextColor="black"/>
-
-                        <!-- Body of note -->
-                        <Label Grid.Row="1" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="4" FontSize="15" TextColor="#4D4D4D">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <FormattedString.Spans>
-                                        <Span Text="Your note: " FontAttributes="Bold" FontSize="15"/>
-                                        <Span Text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam dapibus fermentum ipsum. Etiam bibendum elit eget erat. Nulla accumsan, elit sit amet varius semper, nulla mauris mollis quam, tempor suscipit diam nulla vel leo. Fusce consectetuer risus a nunc. Duis risus. Fusce suscipit libero eget elit."/>
-                                    </FormattedString.Spans>
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-
-                        <!-- Footer of note -->
-                        <Label Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Text="Edited on 29.5.2020" FontSize="12" TextColor="Gray" VerticalTextAlignment="End"/>
-                        <StackLayout Grid.Row="5" Grid.Column="3" HorizontalOptions="End" Margin="0,0,15,0">
-                            <ImageButton x:Name="delet3e" HeightRequest="25" Source="delete_icon.png" BackgroundColor="White"/>
-                        </StackLayout>
-                        <StackLayout Grid.Row="5" Grid.Column="3" HorizontalOptions="Start" >
-                            <ImageButton x:Name="edit3" HeightRequest="25" Source="edit_icon.png" BackgroundColor="White"/>
-                        </StackLayout>
-                    </Grid>
-                </Frame>
-
-                <Frame Margin="15, 5" CornerRadius="5" HasShadow="True" OutlineColor="LightGray">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <!-- Header of note -->
-                        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Note title" FontSize="20" TextColor="black" FontAttributes="Bold"/>
-                        <Label Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Text="26.5.2020" HorizontalTextAlignment="End" VerticalTextAlignment="End" FontSize="15" TextColor="black"/>
-
-                        <!-- Body of note -->
-                        <Label Grid.Row="1" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="4" FontSize="15" TextColor="#4D4D4D">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <FormattedString.Spans>
-                                        <Span Text="Your note: " FontAttributes="Bold" FontSize="15"/>
-                                        <Span Text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam dapibus fermentum ipsum. Etiam bibendum elit eget erat. Nulla accumsan, elit sit amet varius semper, nulla mauris mollis quam, tempor suscipit diam nulla vel leo. Fusce consectetuer risus a nunc. Duis risus. Fusce suscipit libero eget elit."/>
-                                    </FormattedString.Spans>
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-
-                        <!-- Footer of note -->
-                        <Label Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Text="Edited on 29.5.2020" FontSize="12" TextColor="Gray" VerticalTextAlignment="End"/>
-                        <StackLayout Grid.Row="5" Grid.Column="3" HorizontalOptions="End" Margin="0,0,15,0">
-                            <ImageButton x:Name="delete4" HeightRequest="25" Source="delete_icon.png" BackgroundColor="White"/>
-                        </StackLayout>
-                        <StackLayout Grid.Row="5" Grid.Column="3" HorizontalOptions="Start" >
-                            <ImageButton x:Name="edit4" HeightRequest="25" Source="edit_icon.png" BackgroundColor="White"/>
-                        </StackLayout>
-                    </Grid>
-                </Frame>
+            <StackLayout x:Name="body">
             </StackLayout>
         </ScrollView>
 
@@ -208,4 +33,5 @@
             <Button x:Name="addNote" Margin="20,5" VerticalOptions="Center" Text="Add new note" BackgroundColor="CadetBlue" TextColor="white" Clicked="addNotePopup_Clicked"/>
         </StackLayout>
     </StackLayout>
+    
 </ContentPage>

@@ -11,7 +11,7 @@ namespace NotesApp {
         public static NoteDatabase Database {
             get {
                 if (database == null) {
-                    database = new NoteDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Notes.db3"));
+                    database = new NoteDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Note.db3"));
                 }
                 return database;
             }

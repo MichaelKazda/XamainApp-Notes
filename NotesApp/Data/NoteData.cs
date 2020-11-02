@@ -13,7 +13,7 @@ namespace NotesApp.Data {
         }
 
         public Task<List<Note>> GetNotesAsync() {
-            return _database.Table<Note>().ToListAsync();
+            return _database.Table<Note>().OrderByDescending(i => i.ID).ToListAsync();
         }
 
         public Task<Note> GetNoteAsync(int id) {

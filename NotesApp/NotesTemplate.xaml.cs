@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace NotesApp.Templates {
+namespace NotesApp {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AddNoteTemp : ContentPage {
-        public AddNoteTemp() {
+    public partial class NotesTemplate : ContentPage {
+        public NotesTemplate() {
             InitializeComponent();
         }
     }
