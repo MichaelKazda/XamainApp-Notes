@@ -12,3 +12,4 @@ D:\_SKOLA\PCv\Olzbut ERA\Xamarin\NoteApp\NotesApp\NotesApp\obj\Debug\netstandard
 D:\_SKOLA\PCv\Olzbut ERA\Xamarin\NoteApp\NotesApp\NotesApp\obj\Debug\netstandard2.0\NotesApp.pdb
 D:\_SKOLA\PCv\Olzbut ERA\Xamarin\NoteApp\NotesApp\NotesApp\obj\Debug\netstandard2.0\NotesApp.csproj.CoreCompileInputs.cache
 D:\_SKOLA\PCv\Olzbut ERA\Xamarin\NoteApp\NotesApp\NotesApp\obj\Debug\netstandard2.0\XamlC.stamp
+D:\_SKOLA\PCv\Olzbut ERA\Xamarin\NoteApp\NotesApp\NotesApp\obj\Debug\netstandard2.0\Templates\AddNoteTemp.xaml.g.cs
