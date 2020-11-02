@@ -11,11 +11,15 @@ using Xamarin.Forms;
 namespace NotesApp {
     public partial class MainPage : ContentPage {
         protected SfPopupLayout addNotePopup;
+        // Save note --> true, Update note --> false
+        public bool save = true;
+        // Global note to update 
+        public Note changeNote;
         protected string todayDate = DateTime.Now.ToString("dd. M. yyyy");
 
         // Generation of entry elements
-        protected Entry NoteTitleEnt = new Entry { Placeholder = "Title of the note", MaxLength = 20 };
-        protected Entry NoteContentEnt = new Entry { Placeholder = "What is on your mind...", MaxLength = 100 };
+        protected Entry NoteTitleEnt = new Entry { Placeholder = "Best title ever (max 10 chars)", MaxLength = 10 };
+        protected Entry NoteContentEnt = new Entry { Placeholder = "What is on your mind... (max 200 chars)", MaxLength = 200 };
         public ICommand SaveNoteCommand { get; set; }
 
         public MainPage() {
@@ -32,7 +36,7 @@ namespace NotesApp {
             DataTemplate templateView = new DataTemplate(() => {
                 StackLayout popupLayout = new StackLayout {
                     Children = {
-                        new Label { Text = "Title (max 20 chars)", TextColor = Color.Black },
+                        new Label { Text = "Title", TextColor = Color.Black },
                         NoteTitleEnt,
                         new Label { Text = "Note", TextColor = Color.Black},
                         NoteContentEnt,
@@ -62,13 +66,18 @@ namespace NotesApp {
             // Note template
             foreach (Note note in notes) {
                 //Del Button setup and bind
-                ImageButton delBtn = new ImageButton { HeightRequest = 25, Source = "delete_icon.png", BackgroundColor = Color.White };
+                ImageButton delBtn = new ImageButton { HeightRequest = 25, Source = "delete_icon.png", BackgroundColor = Color.White, Margin = 5 };
                 delBtn.Clicked += OnDelBtnClicked;
                 delBtn.CommandParameter = note;
+
                 //Edit button setup and bind
-                ImageButton editBtn = new ImageButton { HeightRequest = 25, Source = "edit_icon.png", BackgroundColor = Color.White };
+                ImageButton editBtn = new ImageButton { HeightRequest = 25, Source = "edit_icon.png", BackgroundColor = Color.White, Margin = 5 };
                 editBtn.Clicked += OnEditBtnClicked;
                 editBtn.CommandParameter = note;
+
+                //note label setup
+                Label contentLabel = new Label { FontSize = 15, TextColor = Color.DarkGray, Text = note.NoteContent };
+                Label titleLabel = new Label { FontSize = 20, TextColor = Color.Black, FontAttributes = FontAttributes.Bold, Text = note.NoteTitle };
 
                 Grid grid = new Grid {
                     RowDefinitions = {
@@ -85,16 +94,16 @@ namespace NotesApp {
                         new ColumnDefinition(),
                     },
                 };
-                grid.Children.Add(new Label { FontSize = 20, TextColor = Color.Black, FontAttributes = FontAttributes.Bold, Text = note.NoteTitle }, 0, 0);
-                grid.Children.Add(new Label { FontSize = 15, TextColor = Color.Black, HorizontalOptions = LayoutOptions.End, VerticalOptions = LayoutOptions.End, Text = note.DateCreate }, 2, 0);
-                grid.Children.Add(new Label { FontSize = 15, TextColor = Color.DarkGray, Text = note.NoteContent, HeightRequest = 30 }, 0, 1);
+                grid.Children.Add(titleLabel, 0, 0);
+                grid.Children.Add(new Label { FontSize = 15, TextColor = Color.Black, HorizontalOptions = LayoutOptions.End, VerticalOptions = LayoutOptions.End, Text = note.DateCreate }, 3, 0);
+                grid.Children.Add(contentLabel, 0, 1);
                 grid.Children.Add(new Label { FontSize = 12, TextColor = Color.LightGray, Text = note.DateUpdate }, 0, 5);
                 grid.Children.Add(new StackLayout {
                     HorizontalOptions = LayoutOptions.End,
                     Children = {
                         delBtn
                     }
-                }, 0, 5);
+                }, 2, 5);
                 grid.Children.Add(new StackLayout {
                     HorizontalOptions = LayoutOptions.Start,
                     Children = {
@@ -109,24 +118,35 @@ namespace NotesApp {
                     Content = grid
                 };
 
+                //Note label span
+                Grid.SetColumnSpan(contentLabel, 4);
+                Grid.SetRowSpan(contentLabel, 3);
+                Grid.SetColumnSpan(titleLabel, 2);
+
                 body.Children.Add(frame);
             };
         }
 
         // When add note btn clicked, showes add note popup
         private void addNotePopup_Clicked(object sender, EventArgs e) {
+            save = true;
             addNotePopup.Show();
         }
 
         // When added new note, saves it
         async void SaveNote() {
-            if (!string.IsNullOrEmpty(NoteTitleEnt.Text) && !string.IsNullOrEmpty(NoteContentEnt.Text)) {
+            if (!string.IsNullOrEmpty(NoteTitleEnt.Text) && !string.IsNullOrEmpty(NoteContentEnt.Text) && save) {
                 Note note = new Note {
                     NoteTitle = NoteTitleEnt.Text,
                     NoteContent = NoteContentEnt.Text,
                     DateCreate = todayDate
                 };
                 await App.Database.SaveNoteAsync(note);
+            }else if (!string.IsNullOrEmpty(NoteTitleEnt.Text) && !string.IsNullOrEmpty(NoteContentEnt.Text) && !save) {
+                changeNote.NoteTitle = NoteTitleEnt.Text;
+                changeNote.NoteContent = NoteContentEnt.Text;
+                changeNote.DateUpdate = todayDate;
+                await App.Database.SaveNoteAsync(changeNote);
             }
 
             //Refresh entries
@@ -142,9 +162,10 @@ namespace NotesApp {
         }
 
         // Edit button clicked event
-        async void OnEditBtnClicked(object sender, EventArgs e) {
+        public void OnEditBtnClicked(object sender, EventArgs e) {
+            save = false;
+            changeNote = (Note)((ImageButton)sender).CommandParameter;
             addNotePopup.Show();
-            await App.Database.SaveNoteAsync((Note)((ImageButton)sender).CommandParameter);
             OnAppearing();
         }
     }
